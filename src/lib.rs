@@ -68,7 +68,7 @@ pub mod time {
     #[cfg(feature="nightly")]
     pub fn delay(duration: Duration) {
         use libc;
-        
+
         let duration = (duration.secs() * 1000) as u32 + duration.extra_nanos() / 1_000_000;
         if duration <= 0 {
             return;
@@ -547,3 +547,7 @@ impl<P: GpioClock + Pin> WiringPi<P> {
         GpioClock::clock_pin()
     }
 }
+
+
+mod dev_bindings;
+pub mod lcd;
